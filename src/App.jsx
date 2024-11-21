@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <div className="fs-1">
-        <h1>MY BOILER PLATE</h1>
+        <h1>Library Management System</h1>
         <AiFillChrome />
       </div>
       <ToastContainer />
