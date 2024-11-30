@@ -12,7 +12,7 @@ export const Header = () => {
   // const dispatch = useDispatch();
   // const { user } = useSelector((state) => state.userInfo);
 
-  // chage
+  // Change
   const user = { _id: 1 };
 
   const handleOnLogOut = () => {

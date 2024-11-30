@@ -11,13 +11,25 @@ import { useDispatch } from "react-redux";
 
 // Get dispatch action from book action
 import { getAllBooksAction } from "./features/books/bookAction";
+import { setBooks } from "./features/books/bookSlice";
+import { fetchBooks } from "./features/books/bookAxios";
 
 function App() {
   const dispatch = useDispatch();
 
+  // const fillBookData = async () => {
+  //   const data = await fetchBooks(false);
+
+  //   console.log(data);
+  //   dispatch(setBooks(data.books));
+  // };
+
   useEffect(() => {
+    // axios call
     dispatch(getAllBooksAction());
-  }, [dispatch]);
+
+    // dispatch(getAllBooksAction());
+  }, []);
 
   return (
     <>

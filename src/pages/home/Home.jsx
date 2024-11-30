@@ -5,9 +5,23 @@ import { Container, Row, Col, Form } from "react-bootstrap";
 import { CustomCard } from "../../components/customCard/CustomCard";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+// import { useDispatch } from "react-redux";
+// import { setBooks } from "../../features/books/bookSlice";
 
 const Home = () => {
   const { books } = useSelector((state) => state.bookInfo);
+
+  // general store
+  // const books = [
+  //   {
+  //     _id: 1,
+  //     title: "Learning JS",
+  //     author: "Author",
+  //     thumbnail: "https://randomuser.me/api/portraits/men/59.jpg",
+  //     publishedYear: 2000,
+  //     status: "active",
+  //   },
+  // ];
 
   const [searchedBooks, setSearchBooks] = useState([]);
 
