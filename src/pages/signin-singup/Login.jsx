@@ -1,12 +1,50 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { CustomInput } from "../../components/customInput/CustomInput";
 import { Button, Col, Row, Form } from "react-bootstrap";
 import { loginUser } from "../../features/user/userAxios";
+import { userSignInAction } from "../../features/user/userAction";
+
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const Login = () => {
+  const dispatch = useDispatch();
   const emailRef = useRef("");
   const passRef = useRef("");
+
+  // location
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // to handle return location
+  const { user } = useSelector((state) => state.userInfo);
+  const sendTo = location?.state?.from?.location?.pathname || "/dashboard";
+
+  useEffect(() => {
+    user?._id && navigate(sendTo);
+  }, [user?._id, navigate, sendTo]);
+
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+    const email = emailRef.current.value;
+    const password = passRef.current.value;
+
+    if (!email || !password) {
+      return toast.error("Both field must be filled");
+    }
+
+    // const responsePendig = loginUser({ email, password });
+    // toast.promise(responsePendig, {
+    //   pending: "Please wait....",
+    // });
+
+    // const { status, message } = await responsePendig;
+
+    // toast[status](message);
+
+    dispatch(userSignInAction({ email, password }));
+  };
 
   const inputs = [
     {
@@ -26,27 +64,6 @@ export const Login = () => {
       inputRef: passRef,
     },
   ];
-
-  const handleOnSubmit = async (e) => {
-    e.preventDefault();
-    const email = emailRef.current.value;
-    const password = passRef.current.value;
-    console.log(1000, email, password);
-    // if (!email || !password) {
-    //   return toast.error("Both field must be filled");
-    // }
-
-    const responsePendig = loginUser({ email, password });
-    toast.promise(responsePendig, {
-      pending: "Please wait....",
-    });
-
-    const { status, message } = await responsePendig;
-
-    toast[status](message);
-
-    // dispatch(userSignInAction({ email, password }));
-  };
 
   return (
     <div>

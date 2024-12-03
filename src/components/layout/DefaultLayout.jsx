@@ -2,6 +2,7 @@ import React from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import Container from "react-bootstrap/esm/Container";
+import { Outlet } from "react-router-dom";
 
 export const DefaultLayout = ({ children, pageTitle }) => {
   return (
@@ -10,7 +11,9 @@ export const DefaultLayout = ({ children, pageTitle }) => {
       <Header />
       <Container>
         <div className="p-2">{pageTitle}</div>
-        <main className="main">{children}</main>
+        <main className="main">
+          <Outlet />
+        </main>
       </Container>
 
       {/* footer  */}

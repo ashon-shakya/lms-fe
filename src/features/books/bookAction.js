@@ -9,26 +9,15 @@ import { setBooks, setSelectedBook } from "./bookSlice";
 
 export const getAllBooksAction = (isPrivate) => async (dispatch) => {
   // 1. fetch data
-  const data = await fetchBooks(false);
-
-  console.log(data);
-
+  const {books, status} = await fetchBooks(isPrivate);
   // 2. update data
-  dispatch(setBooks(data.books));
+  if(status){
+    dispatch(setBooks(books));
+  }
 };
-
-// export const getAllBooksAction = (isPrivate) => async (dispatch) => {
-//   const { status, books } = await fetchBooks(isPrivate);
-//   if (status) {
-//     dispatch(setBooks(books));
-//   }
-// };
-
-// export const getAllBooksAction()
 
 export const postNewBookAction = (obj) => async (disptch) => {
   // call axios to send data
-
   const pending = postNewBook(obj);
   toast.promise(pending, {
     pending: "Please wait ...",

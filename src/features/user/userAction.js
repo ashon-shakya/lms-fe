@@ -24,6 +24,9 @@ export const userSignInAction = (obj) => async (dispatch) => {
   if (status === "success") {
     dispatch(getUserObj());
   }
+
+  // return status
+  return {status,message};
 };
 
 //auto login user

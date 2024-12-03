@@ -15,35 +15,37 @@ const sideLinks = [
     icon: <FaBookBookmark />,
     title: "Books",
     to: "/admin/books",
-    isAdminOnly: true,
+    isAdminOnly: false,
   },
   {
     icon: <FaUsers />,
     title: "Students",
     to: "/admin/students",
-    isAdminOnly: true,
+    isAdminOnly: false,
   },
   {
     icon: <FaListUl />,
     title: "All Burrows",
     to: "/admin/all-burrows",
-    isAdminOnly: true,
+    isAdminOnly: false,
   },
   {
     icon: <TbStarsFilled />,
     title: "All Reviews",
     to: "/admin/reviews",
-    isAdminOnly: true,
+    isAdminOnly: false,
   },
   {
     icon: <IoLibrary />,
     title: "My Books",
     to: "/my-books",
+    isAdminOnly: false,
   },
   {
     icon: <CgProfile />,
     title: "Profile",
     to: "/profile",
+    isAdminOnly: false,
   },
 ];
 
@@ -53,7 +55,7 @@ export const UserSidebar = () => {
   const list =
     user.role === "admin"
       ? sideLinks
-      : sideLinks.filter((itm) => !itm.isAdminOnly);
+      : sideLinks.filter((item) => !item.isAdminOnly);
 
   return (
     <Stack gap={1}>

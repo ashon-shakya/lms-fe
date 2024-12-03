@@ -7,19 +7,25 @@ import { Link } from "react-router-dom";
 import { setUser } from "../../features/user/userSlice";
 
 import lmsLogo from "../../assets/lms-logo-wide.png";
+// react icons
+import { MdOutlineSpaceDashboard } from "react-icons/md";
+import { AiFillHome } from "react-icons/ai";
+import { FaUserCircle } from "react-icons/fa";
+import { FaRegCircleUser } from "react-icons/fa6";
+import { TfiWrite } from "react-icons/tfi";
 
 export const Header = () => {
-  // const dispatch = useDispatch();
-  // const { user } = useSelector((state) => state.userInfo);
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.userInfo);
 
   // Change
-  const user = { _id: 1 };
+  // const user = { _id: 1 };
 
   const handleOnLogOut = () => {
     //sign out from browser
     sessionStorage.removeItem("accessJWT");
     localStorage.removeItem("refreshJWT");
-    // dispatch(setUser({}));
+    dispatch(setUser({}));
 
     // sign out from server
   };
@@ -33,25 +39,25 @@ export const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <Link className="nav-link" to="/">
-              <i className="fa-solid fa-house"></i> Home
+              <AiFillHome /> Home
             </Link>
             {user?._id ? (
               <>
                 <Link className="nav-link" to="/dashboard">
-                  <i className="fa-solid fa-chart-pie"></i> Dashboard
+                  <MdOutlineSpaceDashboard /> Dashboard
                 </Link>
                 <Link onClick={handleOnLogOut} className="nav-link" to="/">
-                  <i className="fa-solid fa-user"></i> Logout
+                  <FaUserCircle /> Logout
                 </Link>
               </>
             ) : (
               <>
-                <Link className="nav-link" to="/signin">
+                <Link className="nav-link" to="/login">
                   {" "}
-                  <i className="fa-solid fa-right-to-bracket"></i> SignIn
+                  <FaRegCircleUser /> SignIn
                 </Link>
                 <Link className="nav-link" to="/signup">
-                  <i className="fa-regular fa-user"></i> SignUp
+                  <TfiWrite /> SignUp
                 </Link>
               </>
             )}

@@ -5,11 +5,13 @@ import { CustomInput } from "../../components/customInput/CustomInput";
 
 import { toast } from "react-toastify";
 import { postNewUser } from "../../features/user/userAxios";
+import { useNavigate } from "react-router-dom";
 // import { postNewUser } from "../../features/users/userAxios";
 
 const SignUp = () => {
   const [form, setForm] = useState({});
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -38,6 +40,10 @@ const SignUp = () => {
     const { status, message } = await responsePendig;
 
     toast[status](message);
+
+    if (status == "success") {
+      navigate("/");
+    }
   };
 
   const inputs = [

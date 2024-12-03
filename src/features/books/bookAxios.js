@@ -30,10 +30,10 @@ export const fetchSingleBook = async (_id) => {
   return apiProcesser(axiosObj);
 };
 
-export const updateABook = async (obj) => {
+export const updateABook = async ({_id, ...obj}) => {
   const axiosObj = {
     method: "put",
-    url: bookEP,
+    url: bookEP + "/" + _id,
     data: obj,
     isPrivate: true,
   };

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { DefaultLayout } from "../../components/layout/DefaultLayout";
 import { CustomCarousel } from "../../components/customCarouse/CustomCarousel";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import { CustomCard } from "../../components/customCard/CustomCard";
@@ -26,21 +25,23 @@ const Home = () => {
   const [searchedBooks, setSearchBooks] = useState([]);
 
   useEffect(() => {
-    setSearchBooks(books);
+    setSearchBooks(books.filter((book) => book.status == "active"));
   }, [books]);
 
   const handleOnSearch = (e) => {
     const { value } = e.target;
 
     setSearchBooks(
-      books.filter(({ title }) =>
-        title.toLowerCase().includes(value.toLowerCase())
+      books.filter(
+        ({ status, title }) =>
+          status == "active" &&
+          title.toLowerCase().includes(value.toLowerCase())
       )
     );
   };
 
   return (
-    <DefaultLayout>
+    <>
       <CustomCarousel />
 
       {/* book list  */}
@@ -59,19 +60,16 @@ const Home = () => {
         </Row>
         <hr />
         <Row className="mb-4">
-          <Col className="d-flex gap-4 flex-wrap">
-            {searchedBooks.map(
-              (book) =>
-                book.status === "active" && (
-                  <Link key={book._id} to={"/book/" + book._id}>
-                    <CustomCard {...book} />
-                  </Link>
-                )
-            )}
+          <Col className="d-flex gap-4 flex-wrap justify-content-center">
+            {searchedBooks.map((book) => (
+              <Link key={book._id} to={"/book/" + book._id}>
+                <CustomCard {...book} />
+              </Link>
+            ))}
           </Col>
         </Row>
       </Container>
-    </DefaultLayout>
+    </>
   );
 };
 
