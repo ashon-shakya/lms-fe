@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { UserLayout } from "../../components/layout/UserLayout";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   getSingleBookAction,
   updateSingleBookAction,
@@ -15,6 +15,7 @@ const EditBook = () => {
   const { _id } = useParams();
   const dispatch = useDispatch();
   const { form, handleOnChange, setForm } = useForm({});
+  const navigate = useNavigate();
 
   const { selectedBook } = useSelector((state) => state.bookInfo);
 
@@ -26,12 +27,15 @@ const EditBook = () => {
     }
   }, [dispatch, _id, selectedBook, setForm, form]);
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
     const { __v, createdAt, isbn, updatedAt, ...rest } = form;
 
     if (window.confirm("Are you sure you want to make this changes?")) {
-      dispatch(updateSingleBookAction(rest));
+      const data = await dispatch(updateSingleBookAction(rest));
+      if (data.status == "success") {
+        navigate("/admin/books");
+      }
     }
   };
 

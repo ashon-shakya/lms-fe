@@ -50,7 +50,7 @@ const sideLinks = [
 ];
 
 export const UserSidebar = () => {
-  const { user } = useSelector((state) => state.userInfo);
+  const { user, menu } = useSelector((state) => state.userInfo);
 
   const list =
     user.role === "admin"
@@ -60,7 +60,13 @@ export const UserSidebar = () => {
   return (
     <Stack gap={1}>
       {list.map(({ title, to, icon }) => (
-        <Link key={title} to={to} className="p-2 nav-link">
+        <Link
+          key={title}
+          to={to}
+          className={`p-2 nav-link ${
+            title === menu ? "bg-white text-dark rounded" : ""
+          } `}
+        >
           {icon} {title}
         </Link>
       ))}

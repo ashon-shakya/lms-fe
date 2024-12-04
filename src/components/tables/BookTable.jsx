@@ -20,7 +20,7 @@ export const BookTable = () => {
 
   useEffect(() => {
     dispatch(getAllBooksAction(isPrivate));
-  }, [dispatch, books]);
+  }, [dispatch]);
   return (
     <div>
       <div className="d-flex justify-content-between mb-4">

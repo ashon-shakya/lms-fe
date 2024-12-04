@@ -48,6 +48,8 @@ export const updateSingleBookAction = (obj) => async (dispatch) => {
   toast[status](message);
 
   status === "success" && dispatch(getSingleBookAction(obj._id));
+
+  return {status, message};
 };
 
 export const deleteSingleBookAction = (id)=>async(dispatch) =>{
@@ -61,5 +63,5 @@ export const deleteSingleBookAction = (id)=>async(dispatch) =>{
   toast[status](message);
   console.log(status, message);
   // 2. fetch all update book list
-  dispatch(getAllBooksAction(isPrivate));
+  dispatch(getAllBooksAction(true));
 }
