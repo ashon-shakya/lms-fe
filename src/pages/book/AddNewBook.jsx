@@ -11,12 +11,15 @@ import { useDispatch } from "react-redux";
 const initialState = {};
 
 const AddNewBook = () => {
-  const disptch = useDispatch();
+  const dispatch = useDispatch();
   const { form, handleOnChange } = useForm(initialState);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    disptch(postNewBookAction(form));
+    //1. call post new book api
+    //2. status check
+
+    dispatch(postNewBookAction(form));
   };
 
   return (

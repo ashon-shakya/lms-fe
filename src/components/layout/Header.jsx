@@ -13,6 +13,7 @@ import { AiFillHome } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { TfiWrite } from "react-icons/tfi";
+import { userLogoutAction } from "../../features/user/userAction";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -23,10 +24,7 @@ export const Header = () => {
 
   const handleOnLogOut = () => {
     //sign out from browser
-    sessionStorage.removeItem("accessJWT");
-    localStorage.removeItem("refreshJWT");
-    dispatch(setUser({}));
-
+    dispatch(userLogoutAction());
     // sign out from server
   };
   return (

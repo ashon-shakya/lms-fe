@@ -52,6 +52,7 @@ function App() {
         {/* Private Routes */}
 
         {/* Only Admin */}
+        {/* Display Book List */}
         <Route path="admin/books" element={<BookList />} />
         <Route path="admin/books/new" element={<AddNewBook />} />
         <Route path="admin/book/edit/:_id" element={<EditBook />} />

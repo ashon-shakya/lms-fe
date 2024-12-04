@@ -29,6 +29,13 @@ export const userSignInAction = (obj) => async (dispatch) => {
   return {status,message};
 };
 
+export const userLogoutAction = ()=>(dispatch)=>{
+
+    sessionStorage.removeItem("accessJWT");
+    localStorage.removeItem("refreshJWT");
+    dispatch(setUser({}));
+}
+
 //auto login user
 export const autoLogin = () => async (dispatch) => {
   const accessJWT = sessionStorage.getItem("accessJWT");

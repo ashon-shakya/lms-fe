@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { Button, Table } from "react-bootstrap";
-import { getAllBooksAction } from "../../features/books/bookAction";
+import {
+  deleteSingleBookAction,
+  getAllBooksAction,
+} from "../../features/books/bookAction";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -10,9 +13,14 @@ export const BookTable = () => {
 
   const { books } = useSelector((state) => state.bookInfo);
 
+  const handleOnDelete = async (id) => {
+    // 1. delete axios call
+    dispatch(deleteSingleBookAction(id));
+  };
+
   useEffect(() => {
     dispatch(getAllBooksAction(isPrivate));
-  }, [dispatch]);
+  }, [dispatch, books]);
   return (
     <div>
       <div className="d-flex justify-content-between mb-4">
@@ -54,6 +62,12 @@ export const BookTable = () => {
                 <Link to={"/admin/book/edit/" + item._id}>
                   <Button variant="warning">Edit</Button>
                 </Link>
+                <Button
+                  variant="danger"
+                  onClick={() => handleOnDelete(item._id)}
+                >
+                  Delete
+                </Button>
               </td>
             </tr>
           ))}

@@ -39,3 +39,15 @@ export const updateABook = async ({_id, ...obj}) => {
   };
   return apiProcesser(axiosObj);
 };
+
+export const deleteBook = async (_id)=>{
+
+  const axiosObj = {
+    method: "delete",
+    url: bookEP + "/" + _id,
+    isPrivate: true,
+  };
+
+  return apiProcesser(axiosObj);
+
+};

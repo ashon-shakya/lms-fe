@@ -1,5 +1,6 @@
 import { toast } from "react-toastify";
 import {
+  deleteBook,
   fetchBooks,
   fetchSingleBook,
   postNewBook,
@@ -48,3 +49,17 @@ export const updateSingleBookAction = (obj) => async (dispatch) => {
 
   status === "success" && dispatch(getSingleBookAction(obj._id));
 };
+
+export const deleteSingleBookAction = (id)=>async(dispatch) =>{
+  const pending = deleteBook(id);
+  toast.promise(pending, {
+    pending: "Please wait ...",
+    success: pending.message,
+  });
+
+  const { status, message } = await pending;
+  toast[status](message);
+  console.log(status, message);
+  // 2. fetch all update book list
+  dispatch(getAllBooksAction(isPrivate));
+}
