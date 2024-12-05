@@ -7,9 +7,9 @@ import { setMenu } from "../../features/user/userSlice";
 
 const MyBorrow = () => {
   const dispatch = useDispatch();
-  dispatch(setMenu("My Books"));
 
   useEffect(() => {
+    dispatch(setMenu("My Books"));
     dispatch(getMyBorrowListAction());
   }, []);
 

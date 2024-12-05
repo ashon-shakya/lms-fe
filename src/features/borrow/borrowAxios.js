@@ -21,3 +21,12 @@ export const fetchBorrow = () => {
   };
   return apiProcesser(axiosObj);
 };
+
+export const returnBook = (id) => {
+  const axiosObj = {
+    method: "put",
+    url: borrowEP + "/return/" + id,
+    isPrivate: true,
+  };
+  return apiProcesser(axiosObj);
+};
