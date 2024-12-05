@@ -20,6 +20,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import BookList from "./pages/book/BookList";
 import AddNewBook from "./pages/book/AddNewBook";
 import EditBook from "./pages/book/EditBook";
+import MyBorrow from "./pages/borrow/MyBorrow";
 
 function App() {
   const dispatch = useDispatch();
@@ -59,6 +60,7 @@ function App() {
 
         {/* Both admin and users */}
         <Route path="dashboard" element={<Dashboard />} />
+        <Route path="my-books" element={<MyBorrow />} />
       </Routes>
       <ToastContainer />
     </>

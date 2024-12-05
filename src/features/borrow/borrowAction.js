@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
-import { borrowBook } from "./borrowAxios";
+import { borrowBook, fetchBorrow } from "./borrowAxios";
 import { getAllBooksAction } from "../books/bookAction";
+import { setBorrows } from "./borrowSlice";
 
 //auto login user
 export const borrowBookAction = (obj) => async (dispatch) => {
@@ -17,4 +18,13 @@ export const borrowBookAction = (obj) => async (dispatch) => {
   if (status == "success") {
     dispatch(getAllBooksAction());
   }
+};
+
+export const getMyBorrowListAction = () => async (dispatch) => {
+  // 1. fetch borrow list
+  const pending = fetchBorrow();
+
+  const { status, message, borrows } = await pending;
+
+  dispatch(setBorrows(borrows));
 };
