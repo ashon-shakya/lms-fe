@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const rootURL = "http://localhost:8000/api/v1/";
+const rootURL = import.meta.env.VITE_APP_ROOT_SERVER;
 const userEP = rootURL + "users";
 const bookEP = rootURL + "books";
 

@@ -1,6 +1,6 @@
 import { apiProcesser } from "../../helpers/axiosHelper";
 
-const rootURL = "http://localhost:8000";
+const rootURL = import.meta.env.VITE_APP_ROOT_SERVER;
 const borrowEP = rootURL + "/api/v1/borrow";
 
 export const borrowBook = (obj) => {
