@@ -18,6 +18,7 @@ export const apiProcesser = async ({
   data,
   isPrivate,
   isRefreshJwt,
+  contentType = "application/json", // Default to JSON content type
 }) => {
   const headers = {
     Authorization: isPrivate
@@ -25,6 +26,7 @@ export const apiProcesser = async ({
         ? getRefreshJWT()
         : getAccessJWT()
       : null,
+    "Content-Type": contentType, // Add the content type here
   };
   try {
     const response = await axios({

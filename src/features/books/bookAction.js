@@ -10,10 +10,17 @@ import { setBooks, setSelectedBook } from "./bookSlice";
 
 export const getAllBooksAction = (isPrivate) => async (dispatch) => {
   // 1. fetch data
-  const {books, status} = await fetchBooks(isPrivate);
+  const { books, status } = await fetchBooks(isPrivate);
   // 2. update data
-  if(status){
-    dispatch(setBooks(books));
+
+  const bookList = books.map((book) => {
+    return {
+      ...book,
+      thumbnail: import.meta.env.VITE_APP_ROOT_SERVER + "/" + book.thumbnail,
+    };
+  });
+  if (status) {
+    dispatch(setBooks(bookList));
   }
 };
 
@@ -34,7 +41,13 @@ export const postNewBookAction = (obj) => async (disptch) => {
 export const getSingleBookAction = (_id) => async (dispatch) => {
   const { status, books } = await fetchSingleBook(_id);
   if (status) {
-    dispatch(setSelectedBook(books));
+    const bookList = books.map((book) => {
+      return {
+        ...book,
+        thumbnail: import.meta.env.VITE_APP_ROOT_SERVER + "/" + book.thumbnail,
+      };
+    });
+    dispatch(setSelectedBook(bookList));
   }
 };
 
@@ -49,10 +62,10 @@ export const updateSingleBookAction = (obj) => async (dispatch) => {
 
   status === "success" && dispatch(getSingleBookAction(obj._id));
 
-  return {status, message};
+  return { status, message };
 };
 
-export const deleteSingleBookAction = (id)=>async(dispatch) =>{
+export const deleteSingleBookAction = (id) => async (dispatch) => {
   const pending = deleteBook(id);
   toast.promise(pending, {
     pending: "Please wait ...",
@@ -64,4 +77,4 @@ export const deleteSingleBookAction = (id)=>async(dispatch) =>{
   console.log(status, message);
   // 2. fetch all update book list
   dispatch(getAllBooksAction(true));
-}
+};
