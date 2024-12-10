@@ -30,3 +30,12 @@ export const fetchUserInfo = () => {
   };
   return apiProcesser(axiosObj);
 };
+
+// verify user
+export const verifyUser = (token) => {
+  const axiosObj = {
+    method: "get",
+    url: userEP + "/verify?token=" + token,
+  };
+  return apiProcesser(axiosObj);
+};

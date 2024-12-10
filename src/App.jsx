@@ -21,6 +21,9 @@ import BookList from "./pages/book/BookList";
 import AddNewBook from "./pages/book/AddNewBook";
 import EditBook from "./pages/book/EditBook";
 import MyBorrow from "./pages/borrow/MyBorrow";
+import Reviews from "./pages/reviews/Reviews";
+import { getReviews } from "./features/reviews/reviewAction";
+import VerifyUser from "./pages/signin-singup/VerifyUser";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,7 +39,7 @@ function App() {
     // axios call
     dispatch(getAllBooksAction());
     dispatch(autoLogin());
-    // dispatch(getReviews());
+    dispatch(getReviews());
     // dispatch(getAllBooksAction());
   }, []);
 
@@ -49,6 +52,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="book/:_id" element={<BookLanding />} />
+          <Route path="verify/:_token" element={<VerifyUser />} />
         </Route>
         {/* Private Routes */}
 
@@ -57,6 +61,8 @@ function App() {
         <Route path="admin/books" element={<BookList />} />
         <Route path="admin/books/new" element={<AddNewBook />} />
         <Route path="admin/book/edit/:_id" element={<EditBook />} />
+
+        <Route path="admin/reviews" element={<Reviews />} />
 
         {/* Both admin and users */}
         <Route path="dashboard" element={<Dashboard />} />

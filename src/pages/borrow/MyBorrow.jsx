@@ -1,21 +1,21 @@
 import React, { useEffect } from "react";
 import { UserLayout } from "../../components/layout/UserLayout";
-import BurrowList from "./BurrowList";
-import { useDispatch } from "react-redux";
-import { getMyBorrowListAction } from "../../features/borrow/borrowAction";
+import { MyBorrowTable } from "../../components/tables/MyBorrowTable";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBorrowsAction } from "../../features/borrow/borrowAction";
 import { setMenu } from "../../features/user/userSlice";
 
 const MyBorrow = () => {
   const dispatch = useDispatch();
+  dispatch(setMenu("My Books"));
 
+  const { borrows } = useSelector((state) => state.borrowInfo);
   useEffect(() => {
-    dispatch(setMenu("My Books"));
-    dispatch(getMyBorrowListAction());
-  }, []);
-
+    dispatch(fetchBorrowsAction());
+  }, [dispatch]);
   return (
-    <UserLayout pageTitle={"My Borrowed Book"}>
-      <BurrowList />
+    <UserLayout pageTitle={"My borrow list"}>
+      <MyBorrowTable borrows={borrows} />
     </UserLayout>
   );
 };

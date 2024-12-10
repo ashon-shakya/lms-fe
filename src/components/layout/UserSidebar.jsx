@@ -25,8 +25,8 @@ const sideLinks = [
   },
   {
     icon: <FaListUl />,
-    title: "All Burrows",
-    to: "/admin/all-burrows",
+    title: "All Borrows",
+    to: "/admin/all-borrows",
     isAdminOnly: true,
   },
   {

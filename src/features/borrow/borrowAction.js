@@ -5,7 +5,7 @@ import { setBorrows } from "./borrowSlice";
 
 //auto login user
 export const borrowBookAction = (obj) => async (dispatch) => {
-  // 1. burrowAxios
+  // 1. borrowAxios
   const pending = borrowBook(obj);
 
   toast.promise(pending, {
@@ -20,13 +20,14 @@ export const borrowBookAction = (obj) => async (dispatch) => {
   }
 };
 
-export const getMyBorrowListAction = () => async (dispatch) => {
+export const fetchBorrowsAction = () => async (dispatch) => {
   // 1. fetch borrow list
   const pending = fetchBorrow();
 
   const { status, message, borrows } = await pending;
-
-  dispatch(setBorrows(borrows));
+  if (status === "success") {
+    dispatch(setBorrows(borrows));
+  }
 };
 
 // Action to return book
@@ -42,7 +43,7 @@ export const returnBookAction = (id) => async (dispatch) => {
   toast[status](message);
 
   if (status == "success") {
-    dispatch(getMyBorrowListAction());
+    dispatch(fetchBorrowsAction());
     dispatch(getAllBooksAction());
   }
 };

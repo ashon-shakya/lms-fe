@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
-import { getAllBooksAction } from "../../features/books/bookAction";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { returnBurrowAction } from "../../features/burrows/burrowAction";
+import { returnBookAction } from "../../features/borrow/borrowAction";
 import { ReviewForm } from "../forms/ReviewForm";
 import { CustomModal } from "../customModal/CustomModal";
 
-export const MyBurrowTable = ({ burrows = [] }) => {
+export const MyBorrowTable = ({ borrows = [] }) => {
   const dispatch = useDispatch();
-  const [burrow, setBurrow] = useState({});
+  const [borrow, setBorrow] = useState({});
 
   useEffect(() => {}, [dispatch]);
   return (
     <div>
-      {burrow?._id && (
-        <CustomModal title="Leave your review" onHide={setBurrow}>
-          <ReviewForm burrow={burrow} setBurrow={setBurrow} />
+      {borrow?._id && (
+        <CustomModal title="Leave your review" onHide={setBorrow}>
+          <ReviewForm borrow={borrow} setBorrow={setBorrow} />
         </CustomModal>
       )}
 
       <div className="d-flex justify-content-between mb-4">
-        <div>30 Burrowed history found!</div>
+        <div>30 Borrowed history found!</div>
       </div>
       <hr />
       <Table striped bordered hover>
@@ -36,7 +34,7 @@ export const MyBurrowTable = ({ burrows = [] }) => {
           </tr>
         </thead>
         <tbody>
-          {burrows.map((item, i) => (
+          {borrows.map((item, i) => (
             <tr key={item._id}>
               <td>{i + 1}</td>
               <td>
@@ -50,7 +48,7 @@ export const MyBurrowTable = ({ burrows = [] }) => {
 
               <td>
                 {item?.isReturned ? (
-                  <Button onClick={() => setBurrow(item)} variant="warning">
+                  <Button onClick={() => setBorrow(item)} variant="warning">
                     Give Reviews
                   </Button>
                 ) : (
@@ -59,13 +57,7 @@ export const MyBurrowTable = ({ burrows = [] }) => {
                     onClick={() =>
                       window.confirm(
                         "Are you sure you want to reaturn this book?"
-                      ) &&
-                      dispatch(
-                        returnBurrowAction({
-                          _id: item._id,
-                          bookId: item.bookId,
-                        })
-                      )
+                      ) && dispatch(returnBookAction(item._id))
                     }
                   >
                     Return Book

@@ -6,7 +6,7 @@ import { Button, Col, Nav, Row, Spinner, Tab, Tabs } from "react-bootstrap";
 import { ReviewBlock } from "../../components/customCard/ReviewBlock";
 import { Stars } from "../../components/stars/Stars";
 import { borrowBookAction } from "../../features/borrow/borrowAction";
-// import { addNewBurrowAction } from "../../features/burrows/burrowAction";
+// import { addNewBorrowAction } from "../../features/borrows/borrowAction";
 
 const BookLanding = () => {
   const location = useLocation();
@@ -15,9 +15,7 @@ const BookLanding = () => {
 
   const { books } = useSelector((state) => state.bookInfo);
   const { user } = useSelector((state) => state.userInfo);
-  // const { pubReviews } = useSelector((state) => state.reviewInfo);
-
-  const pubReviews = [];
+  const { pubReviews } = useSelector((state) => state.reviewInfo);
 
   const book = books.find((item) => item._id === _id);
   if (!book?._id) {
@@ -34,16 +32,9 @@ const BookLanding = () => {
     expectedAvailable,
   } = book;
 
-  const handleOnBookBurrow = () => {
-    if (window.confirm("Are you sure, you want to burrow this book?")) {
-      // dispatch(
-      //   addNewBurrowAction({
-      //     bookId: _id,
-      //     bookTitle: title,
-      //     thumbnail: thumbnail,
-      //   })
-      // );
-      console.log("BURROWING");
+  const handleOnBookBorrow = () => {
+    if (window.confirm("Are you sure, you want to borrow this book?")) {
+      console.log("BoRROWING");
       dispatch(
         borrowBookAction({
           bookId: _id,
@@ -79,21 +70,21 @@ const BookLanding = () => {
           <p className="mt-5">{description.slice(0, 130)}...</p>
           <div className="">
             {user?._id ? (
-              <Button disabled={!isAvailable} onClick={handleOnBookBurrow}>
+              <Button disabled={!isAvailable} onClick={handleOnBookBorrow}>
                 {isAvailable
-                  ? "Burrow This Book"
+                  ? "Borrow This Book"
                   : "Expected available date: " +
                     expectedAvailable.slice(0, 10)}
               </Button>
             ) : (
               <Link
-                to="/signin"
+                to="/login"
                 className=""
                 state={{
                   from: { location },
                 }}
               >
-                <Button>Login to burrow</Button>
+                <Button>Login to borrow</Button>
               </Link>
             )}
           </div>
