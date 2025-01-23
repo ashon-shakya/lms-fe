@@ -1,10 +1,6 @@
 version: 0.2
 
 phases:
-  first_phase:
-    commands:
-      - npm install first phase
-      - npm install second command
   pre_build:
     commands:
       - npm install
