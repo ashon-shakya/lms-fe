@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 const isPrivate = true;
 export const BookTable = () => {
+  return <h1>BOOK Table</h1>;
   const dispatch = useDispatch();
 
   const { books } = useSelector((state) => state.bookInfo);
