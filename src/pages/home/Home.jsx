@@ -8,36 +8,40 @@ import { Link } from "react-router-dom";
 // import { setBooks } from "../../features/books/bookSlice";
 
 const Home = () => {
-  const { books } = useSelector((state) => state.bookInfo);
+  // TODO
+  // const { books } = useSelector((state) => state.bookInfo);
 
   // general store
-  // const books = [
-  //   {
-  //     _id: 1,
-  //     title: "Learning JS",
-  //     author: "Author",
-  //     thumbnail: "https://randomuser.me/api/portraits/men/59.jpg",
-  //     publishedYear: 2000,
-  //     status: "active",
-  //   },
-  // ];
+  // TODO: remove
+  const books = [
+    {
+      _id: 1,
+      title: "Learning JS",
+      author: "Author",
+      thumbnail: "https://randomuser.me/api/portraits/men/59.jpg",
+      publishedYear: 2000,
+      status: "active",
+    },
+  ];
 
   const [searchedBooks, setSearchBooks] = useState([]);
 
   useEffect(() => {
-    setSearchBooks(books.filter((book) => book.status == "active"));
+    // TODO
+    // setSearchBooks(books.filter((book) => book.status == "active"));
   }, [books]);
 
   const handleOnSearch = (e) => {
     const { value } = e.target;
 
-    setSearchBooks(
-      books.filter(
-        ({ status, title }) =>
-          status == "active" &&
-          title.toLowerCase().includes(value.toLowerCase())
-      )
-    );
+    // TODO
+    // setSearchBooks(
+    //   books.filter(
+    //     ({ status, title }) =>
+    //       status == "active" &&
+    //       title.toLowerCase().includes(value.toLowerCase())
+    //   )
+    // );
   };
 
   return (

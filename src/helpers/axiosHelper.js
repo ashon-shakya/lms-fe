@@ -5,11 +5,13 @@ const userEP = rootURL + "users";
 const bookEP = rootURL + "books";
 
 const getAccessJWT = () => {
-  return sessionStorage.getItem("accessJWT");
+  // TODO
+  // return sessionStorage.getItem("accessJWT");
 };
 
 const getRefreshJWT = () => {
-  return localStorage.getItem("refreshJWT");
+  // TODO
+  // return localStorage.getItem("refreshJWT");
 };
 
 export const apiProcesser = async ({

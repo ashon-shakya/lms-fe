@@ -19,7 +19,8 @@ export const BookTable = () => {
   };
 
   useEffect(() => {
-    dispatch(getAllBooksAction(isPrivate));
+    // TODO
+    // dispatch(getAllBooksAction(isPrivate));
   }, [dispatch]);
   return (
     <div>

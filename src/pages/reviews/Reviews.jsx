@@ -18,7 +18,8 @@ const Reviews = () => {
 
   dispatch(setMenu("All Reviews"));
   useEffect(() => {
-    dispatch(getReviews(isPrivate));
+    // TODO
+    // dispatch(getReviews(isPrivate));
   }, [dispatch]);
 
   const handleOnSwitchChange = (e) => {
