@@ -10,6 +10,7 @@ import { CgProfile } from "react-icons/cg";
 import { useSelector } from "react-redux";
 import { TbStarsFilled } from "react-icons/tb";
 
+// menu options
 const sideLinks = [
   {
     icon: <FaBookBookmark />,

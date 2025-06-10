@@ -4,9 +4,10 @@ const handleOnChange = ({ e, form, setForm }) => {
   let { checked, name, value, files } = e.target;
   console.log(name, checked);
 
-  if (name === "status") {
-    value = checked ? "active" : "inactive";
-  }
+  // TODO
+  // if (name === "status") {
+  //   value = checked ? "active" : "inactive";
+  // }
 
   if (name === "bookFile" && files) {
     setForm({

@@ -3,6 +3,8 @@ import { apiProcesser } from "../../helpers/axiosHelper";
 const bookEP = import.meta.env.VITE_APP_ROOT_SERVER + "/api/v1/books";
 
 export const fetchBooks = async (isPrivate) => {
+  return;
+  //TODO
   const axiosObj = {
     method: "get",
     url: isPrivate ? bookEP + "/all" : bookEP,
@@ -13,6 +15,8 @@ export const fetchBooks = async (isPrivate) => {
 
 // CRUD PAGES
 export const postNewBook = async (obj) => {
+  return;
+  //TODO
   const axiosObj = {
     method: "post",
     url: bookEP,
@@ -24,6 +28,8 @@ export const postNewBook = async (obj) => {
 };
 
 export const fetchSingleBook = async (_id) => {
+  return;
+  //TODO
   const axiosObj = {
     method: "get",
     url: bookEP + "/" + _id,
@@ -32,6 +38,8 @@ export const fetchSingleBook = async (_id) => {
 };
 
 export const updateABook = async ({ _id, ...obj }) => {
+  return;
+  //TODO
   const axiosObj = {
     method: "put",
     url: bookEP + "/" + _id,
@@ -42,6 +50,8 @@ export const updateABook = async ({ _id, ...obj }) => {
 };
 
 export const deleteBook = async (_id) => {
+  return;
+  //TODO
   const axiosObj = {
     method: "delete",
     url: bookEP + "/" + _id,

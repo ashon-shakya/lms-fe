@@ -4,6 +4,8 @@ const rootURL = import.meta.env.VITE_APP_ROOT_SERVER;
 const userEP = rootURL + "/api/v1/users";
 
 export const postNewUser = async (obj) => {
+  return;
+  // TODO
   const axiosObj = {
     method: "post",
     url: userEP,
@@ -13,6 +15,8 @@ export const postNewUser = async (obj) => {
 };
 
 export const loginUser = async (obj) => {
+  return;
+  // TODO
   const axiosObj = {
     method: "post",
     url: userEP + "/login",
@@ -23,6 +27,8 @@ export const loginUser = async (obj) => {
 };
 
 export const fetchUserInfo = () => {
+  return;
+  // TODO
   const axiosObj = {
     method: "get",
     url: userEP,
@@ -33,6 +39,8 @@ export const fetchUserInfo = () => {
 
 // verify user
 export const verifyUser = (token) => {
+  return;
+  // TODO
   const axiosObj = {
     method: "get",
     url: userEP + "/verify?token=" + token,

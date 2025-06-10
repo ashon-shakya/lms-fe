@@ -9,6 +9,8 @@ import {
 import { setBooks, setSelectedBook } from "./bookSlice";
 
 export const getAllBooksAction = (isPrivate) => async (dispatch) => {
+  return;
+  //TODO
   // 1. fetch data
   const { books, status } = await fetchBooks(isPrivate);
   // 2. update data

@@ -12,6 +12,7 @@ import { CustomInput } from "../../components/customInpute/CustomInput";
 import useForm from "../../hooks/useForm";
 
 const EditBook = () => {
+  return <h1>EDIT BOOK</h1>;
   const { _id } = useParams();
   const dispatch = useDispatch();
   const { form, handleOnChange, setForm } = useForm({});

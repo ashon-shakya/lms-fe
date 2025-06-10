@@ -3,6 +3,8 @@ import { toast } from "react-toastify";
 import { setAllReview, setPubReviews, updateReveiwStatus } from "./reviewSlice";
 
 export const addNewReviewAction = (obj) => async (dispatch) => {
+  return;
+  //TODO
   console.log(100, obj);
   const pending = postNewReview(obj);
 
@@ -21,6 +23,8 @@ export const addNewReviewAction = (obj) => async (dispatch) => {
 };
 
 export const updateReviewAction = (obj) => async (dispatch) => {
+  return;
+  //TODO
   const pending = updateReview(obj);
 
   toast.promise(pending, {
@@ -38,6 +42,8 @@ export const updateReviewAction = (obj) => async (dispatch) => {
 
 // get reviews
 export const getReviews = (isPrivate) => async (dispatch) => {
+  return;
+  //TODO
   const { status, reviews } = await fetchReviews(isPrivate);
 
   if (status) {

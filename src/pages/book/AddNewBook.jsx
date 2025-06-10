@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 const initialState = {};
 
 const AddNewBook = () => {
+  return <h1>ADD NEW BOOK</h1>;
   const dispatch = useDispatch();
   const { form, handleOnChange } = useForm(initialState);
 

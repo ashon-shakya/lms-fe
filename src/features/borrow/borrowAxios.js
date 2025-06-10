@@ -4,6 +4,8 @@ const rootURL = import.meta.env.VITE_APP_ROOT_SERVER;
 const borrowEP = rootURL + "/api/v1/borrow";
 
 export const borrowBook = (obj) => {
+  return;
+  //TODO
   const axiosObj = {
     method: "POST",
     url: borrowEP,
@@ -14,6 +16,8 @@ export const borrowBook = (obj) => {
 };
 
 export const fetchBorrow = () => {
+  return;
+  //TODO
   const axiosObj = {
     method: "get",
     url: borrowEP,
@@ -23,6 +27,8 @@ export const fetchBorrow = () => {
 };
 
 export const returnBook = (id) => {
+  return;
+  //TODO
   const axiosObj = {
     method: "put",
     url: borrowEP + "/return/" + id,

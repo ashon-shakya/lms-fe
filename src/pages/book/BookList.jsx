@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { setMenu } from "../../features/user/userSlice";
 
 const BookList = () => {
+  return <h1>BOOKLIST</h1>;
   const dispatch = useDispatch();
   dispatch(setMenu("Books"));
 

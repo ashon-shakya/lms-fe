@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: {},
-  menu: '',
+  menu: "",
 };
 
 const userSlice = createSlice({
@@ -15,12 +15,11 @@ const userSlice = createSlice({
     setMenu: (state, action) => {
       state.menu = action.payload;
     },
-
   },
 });
 
 const { reducer, actions } = userSlice;
 
-export const { setUser,setMenu } = actions;
+export const { setUser, setMenu } = actions;
 
 export default reducer;

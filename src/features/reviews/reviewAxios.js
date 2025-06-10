@@ -3,6 +3,8 @@ import { apiProcesser } from "../../helpers/axiosHelper";
 const reviewEP = import.meta.env.VITE_APP_ROOT_SERVER + "/api/v1/reviews";
 
 export const postNewReview = async (obj) => {
+  return;
+  //TODO
   const axiosObj = {
     method: "post",
     url: reviewEP,
@@ -13,6 +15,8 @@ export const postNewReview = async (obj) => {
 };
 
 export const updateReview = async (obj) => {
+  return;
+  //TODO
   const axiosObj = {
     method: "patch",
     url: reviewEP,
@@ -23,6 +27,8 @@ export const updateReview = async (obj) => {
 };
 
 export const fetchReviews = async (isPrivate) => {
+  return;
+  //TODO
   const axiosObj = {
     method: "get",
     url: isPrivate ? reviewEP + "/all" : reviewEP,

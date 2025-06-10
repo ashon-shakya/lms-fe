@@ -11,6 +11,8 @@ export const getUserObj = () => async (dispatch) => {
 };
 
 export const userSignInAction = (obj) => async (dispatch) => {
+  return;
+  // TODO
   const pending = loginUser(obj);
   toast.promise(pending, {
     pending: "Please wait...",
@@ -30,6 +32,8 @@ export const userSignInAction = (obj) => async (dispatch) => {
 };
 
 export const userLogoutAction = () => (dispatch) => {
+  return;
+  // TODO
   sessionStorage.removeItem("accessJWT");
   localStorage.removeItem("refreshJWT");
   dispatch(setUser({}));
@@ -37,6 +41,8 @@ export const userLogoutAction = () => (dispatch) => {
 
 //auto login user
 export const autoLogin = () => async (dispatch) => {
+  return;
+  // TODO
   const accessJWT = sessionStorage.getItem("accessJWT");
   const refreshJWT = localStorage.getItem("refreshJWT");
 

@@ -9,6 +9,7 @@ import { borrowBookAction } from "../../features/borrow/borrowAction";
 // import { addNewBorrowAction } from "../../features/borrows/borrowAction";
 
 const BookLanding = () => {
+  return <h1>BookLanding</h1>;
   const location = useLocation();
   const dispatch = useDispatch();
   const { _id } = useParams();
