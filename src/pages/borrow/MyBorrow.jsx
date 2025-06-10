@@ -6,6 +6,8 @@ import { fetchBorrowsAction } from "../../features/borrow/borrowAction";
 import { setMenu } from "../../features/user/userSlice";
 
 const MyBorrow = () => {
+  return <h1>BURROW</h1>;
+  // TODO
   const dispatch = useDispatch();
   dispatch(setMenu("My Books"));
 

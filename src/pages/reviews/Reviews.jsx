@@ -13,6 +13,9 @@ import { setMenu } from "../../features/user/userSlice";
 
 const isPrivate = true;
 const Reviews = () => {
+  return <h1>REVIEW</h1>;
+
+  // TODO
   const { allReviews } = useSelector((state) => state.reviewInfo);
   const dispatch = useDispatch();
 
